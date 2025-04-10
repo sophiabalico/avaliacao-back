@@ -1,6 +1,7 @@
 import produtoModel from "../models/produtoModel.js";
 
 class ProdutosController {
+  // Método para buscar todos os produtos
   getAll = async (req, res) => {
     try {
       const produtos = await produtoModel.getAll();
@@ -12,6 +13,7 @@ class ProdutosController {
 
   };
 
+  // Método para buscar um produto pelo ID
   getById = async (req, res) => {
     try {
       const { id } = req.params;
@@ -29,6 +31,7 @@ class ProdutosController {
     }
   };
 
+  // Método para criar um novo produto
   create = async(req, res) => {
     const { name, price, category, brand, stock, imageUrl, isActive } = req.body;
     try {
@@ -65,6 +68,7 @@ class ProdutosController {
     }
   };
 
+  // Método para atualizar um produto existente
   update = async (req, res) => {
     const { id } = req.params;
     const { name, price, category, brand, stock, imageUrl, isActive } = req.body;
@@ -92,6 +96,7 @@ class ProdutosController {
     } 
   };
 
+  // Método para deletar um produto
   delete = async (req, res) => {
     const { id } = req.params;
 

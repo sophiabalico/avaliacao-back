@@ -1,10 +1,12 @@
 import prisma from "../../prisma/client.js";
 
 class ProdutoModel {
+  // Método para buscar todos os produtos
   getAll = async () => {
     return await prisma.product.findMany();
   };
 
+  // Método para buscar um produto pelo ID
   getById = async (id) => {
     const produto = await prisma.product.findUnique({
       where: {
@@ -15,6 +17,7 @@ class ProdutoModel {
     return produto;
   }
 
+  // Método para criar um novo produto
   create = async (name, price, category, brand, stock, imageUrl, isActive) => {
     return await prisma.product.create({
       data: {
@@ -29,6 +32,7 @@ class ProdutoModel {
     });
   };
 
+  // Método para atualizar um produto existente
   update = async (id, name, price, category, brand, stock, imageUrl, isActive ) => {
     try {
       const produto = await prisma.product.update({
@@ -51,6 +55,7 @@ class ProdutoModel {
     }
   };
 
+  // Método para deletar um produto
   delete = async (id) => {
     try {
       const produtoDeletado = await prisma.product.delete({
