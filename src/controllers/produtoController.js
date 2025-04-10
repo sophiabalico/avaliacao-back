@@ -16,7 +16,7 @@ class ProdutosController {
     try {
       const { id } = req.params;
 
-      const produto = await ProdutoModel.findById(id);
+      const produto = await produtoModel.findById(id);
 
       if (!produto) {
         return res.status(404).json({ error: "Produto não encontrado" });
@@ -42,13 +42,23 @@ class ProdutosController {
         return res.status(400).json({ erro: "Categoria do produto é obrigatório!" });
       }
       if (!brand) {
-        return res.status(400).json({ erro: "Marca do produto do produto é obrigatório!" });
+        return res.status(400).json({ erro: "Marca do produto é obrigatória!" });
       }
       if (!stock) {
-        return res.status(400).json({ erro: "Quantidade em estoque é obrigatório!" });
+        return res.status(400).json({ erro: "Quantidade em estoque é obrigatória!" });
       }
     }
-      const novoProduto = await produtoModel.create();
+
+      const novoProduto = await produtoModel.create(
+        name,
+        price,
+        category,
+        brand,
+        stock,
+        imageUrl,
+        isActive
+      );
+
       res.status(201).json(novoProduto);
     } catch (error) {
       console.error(error);
@@ -87,13 +97,13 @@ class ProdutosController {
     const { id } = req.params;
 
     try {
-      const sucesso = await produtoModel.delete(Number(id));
+      const resultado = await produtoModel.delete(Number(id));
 
-      if (!sucesso) {
+      if (!resultado) {
         return res.status(404).json({ erro: "Produto não encontrada!" });
       }
 
-      res.status(200).send({ message: "Produto deletada com sucesso!" });
+      res.status(200).send({ message: "Produto deletado com sucesso!" });
     } catch (error) {
       console.error(error);
       res.status(500).json({ erro: "Erro ao deletar produto!" });
