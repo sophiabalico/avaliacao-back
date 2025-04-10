@@ -16,7 +16,7 @@ class ProdutosController {
     try {
       const { id } = req.params;
 
-      const produto = await produtoModel.findById(id);
+      const produto = await produtoModel.getById(id);
 
       if (!produto) {
         return res.status(404).json({ error: "Produto não encontrado" });
@@ -30,7 +30,7 @@ class ProdutosController {
   };
 
   create = async(req, res) => {
-    const { name, price, category, brand, stock, imageUrl,isActive } = req.body;
+    const { name, price, category, brand, stock, imageUrl, isActive } = req.body;
     try {
       if (!name) {
         return res.status(400).json({ erro: "Nome do produto é obrigatório!" });
@@ -47,8 +47,7 @@ class ProdutosController {
       if (!stock) {
         return res.status(400).json({ erro: "Quantidade em estoque é obrigatória!" });
       }
-    }
-
+    
       const novoProduto = await produtoModel.create(
         name,
         price,
@@ -100,7 +99,7 @@ class ProdutosController {
       const resultado = await produtoModel.delete(Number(id));
 
       if (!resultado) {
-        return res.status(404).json({ erro: "Produto não encontrada!" });
+        return res.status(404).json({ erro: "Produto não encontrado!" });
       }
 
       res.status(200).send({ message: "Produto deletado com sucesso!" });
@@ -110,4 +109,4 @@ class ProdutosController {
     }
   };
 }
-export default new ProdutoController();
+export default new ProdutosController();

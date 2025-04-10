@@ -25,7 +25,7 @@ model Product {
   imageUrl String
   isActive Boolean
   createAt DateTime @default(now())
-  updateAt DateTime @updateAt
+  updateAt DateTime @updatedAt
 
 
   @@map("products")
