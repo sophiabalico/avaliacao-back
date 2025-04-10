@@ -64,7 +64,7 @@ Este é um projeto de API para gerenciamento de produtos, desenvolvido utilizand
 ### 1. **Listar todos os produtos**
    **Endpoint**: `GET /produtos`
 
-   **Exemplo de resposta**:
+   **Exemplo de resposta feito no Thunder Client**:
    ```json
    [
      {
@@ -85,7 +85,7 @@ Este é um projeto de API para gerenciamento de produtos, desenvolvido utilizand
 ### 2. **Buscar produto por ID**
    **Endpoint**: `GET /produtos/:id`
 
-   **Exemplo de resposta**:
+   **Exemplo de resposta feito no Thunder Client**:
    ```json
    {
      "id": 1,
@@ -117,7 +117,7 @@ Este é um projeto de API para gerenciamento de produtos, desenvolvido utilizand
    }
    ```
 
-   **Exemplo de resposta**:
+   **Exemplo de resposta feito no Thunder Client**:
    ```json
    {
      "id": 2,
@@ -149,7 +149,7 @@ Este é um projeto de API para gerenciamento de produtos, desenvolvido utilizand
    }
    ```
 
-   **Exemplo de resposta**:
+   **Exemplo de resposta feito no Thunder Client**:
    ```json
    {
      "id": 1,
@@ -168,7 +168,7 @@ Este é um projeto de API para gerenciamento de produtos, desenvolvido utilizand
 ### 5. **Deletar um produto**
    **Endpoint**: `DELETE /produtos/:id`
 
-   **Exemplo de resposta**:
+   **Exemplo de resposta feito no Thunder Client**:
    ```json
    {
      "message": "Produto deletado com sucesso!"
@@ -186,9 +186,21 @@ Este é um projeto de API para gerenciamento de produtos, desenvolvido utilizand
    - Utilizado como banco de dados por ser leve e fácil de configurar, ideal para projetos pequenos ou testes.
 
 3. **Estrutura de Pastas**:
-   - `src/controllers`: Contém os controladores responsáveis por lidar com as requisições.
-   - `src/models`: Contém os modelos que interagem com o banco de dados.
-   - `prisma/schema.prisma`: Define o esquema do banco de dados.
+  avaliacao-back/
+├── prisma/
+│   ├── schema.prisma       # Esquema do banco de dados Prisma
+│   ├── client.js           # Cliente Prisma (opcional, se configurado manualmente)
+├── src/
+│   ├── controllers/
+│   │   ├── produtoController.js  # Controladores para lidar com requisições
+│   ├── models/
+│   │   ├── produtoModel.js       # Modelos para interagir com o banco de dados
+│   ├── routes/                   # Rotas da aplicação (se existir)
+│   ├── middlewares/              # Middlewares (se necessário)
+├── .env                          # Configuração de variáveis de ambiente
+├── .env.example                  # Exemplo de configuração de variáveis de ambiente
+├── package.json                  # Dependências e scripts do projeto
+├── README.md                     # Documentação do projeto
 
 4. **Validações**:
    - Validações básicas foram implementadas nos controladores para garantir que os dados enviados pelo cliente sejam válidos.
