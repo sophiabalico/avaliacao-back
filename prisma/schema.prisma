@@ -4,6 +4,8 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+
+
 generator client {
   provider = "prisma-client-js"
 }
@@ -13,13 +15,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Product {
+  id        Int     @id @default(autoincrement())
+  name String
+  price Decimal
+  category String
+  brand String
+  stock Int
+  imageUrl String
+  isActive Boolean
+  createAt DateTime @default(now())
+  updateAt DateTime @updateAt
 
-model Task {
-  id Int @id @default(autoincrement())
-  descricao String
-  concluida Boolean @default(false)
 
-  criadaEm DateTime @default(now())
-
-  @@map("tasks")
+  @@map("products")
 }
